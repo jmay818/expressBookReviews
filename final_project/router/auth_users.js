@@ -37,9 +37,15 @@ regd_users.post("/login", (req,res) => {
     const username = req.body.username;
     const password = req.body.password;
     if (authenticatedUser(username, password)) {
-        return res.send("logged in");
+        let token = jwt.sign({
+            data: password
+        }, 'access', { expiresIn: 60 * 60 });
+        req.session.authorization = {
+            token, username
+        }
+        return res.send("You are now logged in.");
     } else {
-        return res.send("Error");
+        return res.send("Error. Could not log in.");
     }
 });
 
