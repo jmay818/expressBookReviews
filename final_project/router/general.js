@@ -26,7 +26,17 @@ public_users.post("/register", (req,res) => {
 // Get the book list available in the shop
 public_users.get('/', function (req, res) {
     //Write your code here
-    return res.send(books);
+    let p = new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            resolve("Books sent successfully")
+        },6000)})
+    console.log("Before sending books");
+    res.send(books);
+    p.then(function(message) {
+        console.log(message)
+    })
+    console.log("After sending books");
+    return;
 });
 
 // Get book details based on ISBN
@@ -47,7 +57,17 @@ public_users.get('/author/:author', function (req, res) {
             arr.push(books[i + 1]);
         }
     }
-    return res.send(arr);
+    let p = new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            resolve("Books sent successfully")
+        },6000)})
+    console.log("Before sending books");
+    res.send(arr);
+    p.then(function(message) {
+        console.log(message)
+    })
+    console.log("After sending books");
+    return;
 });
 
 // Get all books based on title
@@ -61,7 +81,17 @@ public_users.get('/title/:title', function (req, res) {
             arr.push(books[i + 1]);
         }
     }
-    return res.send(arr);
+    let p = new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            resolve("Books sent successfully")
+        },6000)})
+    console.log("Before sending books");
+    res.send(arr);
+    p.then(function(message) {
+        console.log(message)
+    })
+    console.log("After sending books");
+    return;
 });
 
 //  Get book review
